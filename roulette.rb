@@ -30,22 +30,22 @@ while bank_balance >= 0 and total_bets <= num_bets.to_i
     total_bets += 1
     bet = inital_bet.to_f * 2 ** (single_bet -1)
     could_win = bet * 2
-    fee = 1- (fee / 100)
+    fee = 1- (fee.to_i / 100)
     post_fee = bet * fee
 
     #puts total_bets
     roll = rand() * 100
-    if roll<= win_chance
+    if roll<= win_chance.to_f
       puts
       puts "WIN".green
       puts "************" * 5
-      puts "Bet ##{single_bet}: Betting #{bet}"
-      puts "Bank balance: #{bank_balance}"
-      puts "Stand to win $#{bet * 2} less fee $#{fee}%"
-      puts "After fee: $#{bet * ( 2 * ( 1 - fee.to_f / 100 ))}"
+      puts "Bet ##{single_bet}: Betting $#{bet}"
+      puts "Bank balance: $#{bank_balance}"
+      puts "Stand to win $#{bet * 2} less fee $#{fee}"
+      puts "After fee: $#{post_fee}"
       puts "************" * 5
       bank_balance += post_fee
-      puts "Bank balance: #{bank_balance}"
+      puts "Bank balance: #{bank_balance}".yellow
       puts "************" * 5
       puts
       break;
@@ -55,11 +55,11 @@ while bank_balance >= 0 and total_bets <= num_bets.to_i
       puts "************" * 5
       puts "Bet ##{single_bet}: Betting #{bet}"
       puts "Bank balance: #{bank_balance}"
-      puts "Stand to win $#{bet * 2} less fee $#{fee}%"
-      puts "After fee: $#{bet * ( 2 * ( 1 - fee.to_f / 100 ))}"
+      puts "Stand to win $#{bet * 2} less fee $#{fee}"
+      puts "After fee: $#{post_fee}"
       puts "************" * 5
       bank_balance -= post_fee
-      puts "Bank balance: #{bank_balance}"
+      puts "Bank balance: #{bank_balance}".yellow
       puts "************" * 5
       puts
     end
